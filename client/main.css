@@ -1,0 +1,25 @@
+/* CSS declarations go here */
+.card {
+  width: 120px;
+  height: 145px;
+  font-size: 20px;
+  margin: 10px;
+  border: 1px solid black;
+  display: inline-block;
+}
+
+.middle {
+  width: 1000px;
+  height: 200px;
+  border: 1px solid black;
+  margin:0 auto;
+}
+
+.mid {
+  width: 250px;
+  height: 160px;
+  border: 1px solid black;
+  display: inline-block;
+  margin: 6px;
+
+}

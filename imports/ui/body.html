@@ -1,0 +1,42 @@
+<body>
+
+  <h1>Black and white</h1>
+
+  {{> loginButtons}}
+
+  {{#if currentUser}}
+  <div class="top-bar">
+  </div>
+
+  <div class="player">
+    {{#each competitorCards}}
+        {{> card}}
+    {{/each}}
+  </div>
+  {{#if hideGetCardsButton}}
+    <button class="get-cards">Get Cards</button>
+  {{/if}}
+
+  <button class="restart">Restart Game</button>
+
+
+  <div class="middle">
+    <div class="turn-and-score mid"></div>
+    <div class="submit-cards mid">
+      {{#each submittedCards}}
+        {{> card}}
+    {{/each}}
+    </div>
+  </div>
+
+  <div class="bottom player">
+    {{#each myCards}}
+        {{> card}}
+    {{/each}}
+  </div>
+  {{/if}}
+
+</body>
+
+
+
