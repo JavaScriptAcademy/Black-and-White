@@ -5,13 +5,14 @@ import { ComparedCards } from '../api/comparedCards.js';
 
 export const Cards = new Mongo.Collection('cards');
 
-
+var array = [1,2,3,4,5,6,7,8,9];
 Meteor.methods({
   'cards.insertAll'() {
-    for(var index = 1; index < 10; index++){
+    shuffle(array);
+    for(var index = 0; index < array.length; index++){
       Cards.insert({
-        number: index,
-        color: index%2 === 0 ? 'black' : 'white',
+        number: array[index],
+        color: array[index]%2 === 0 ? 'black' : 'white',
         owner: Meteor.userId(),
         username: Meteor.user().username,
       });
@@ -24,15 +25,23 @@ Meteor.methods({
   'cards.removeAll'() {
     Cards.remove({});
   },
-  'comparedCards.insert'(number, color) {
-    ComparedCards.insert({
-      number: number,
-      color: color,
-      owner: Meteor.userId(),
-      username: Meteor.user().username,
-    });
-  },
-  'comparedCards.removeAll'() {
-    ComparedCards.remove({});
-  },
+  'firstHand'() {
+    return getRandomUser();
+  }
 });
+
+function shuffle(a) {
+    var j, x, i;
+    for (i = a.length; i; i -= 1) {
+        j = Math.floor(Math.random() * i);
+        x = a[i - 1];
+        a[i - 1] = a[j];
+        a[j] = x;
+    }
+}
+
+function getRandomUser() {
+  var num = Math.random();
+  var users = Meteor.users.find().fetch();
+  return num > 0.5 ? users[0].username : users[1].username;
+}

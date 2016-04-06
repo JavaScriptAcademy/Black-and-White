@@ -1,10 +1,9 @@
 <template name="card">
 
-  <div class="card">
+  <div class="card {{#if isEven}}black{{/if}} {{#unless isEven}}white{{/unless}}">
     {{#if isOwner}}
-      {{number}}
+      <span> {{number}}</span>
     {{/if}}
-    {{color}}
   </div>
 
 </template>

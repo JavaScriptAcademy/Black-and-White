@@ -1,11 +1,19 @@
 /* CSS declarations go here */
+
+body {
+  background-color: lightgrey;
+}
+.top-bar {
+  text-align: center;
+}
 .card {
   width: 120px;
   height: 145px;
-  font-size: 20px;
+  font-size: 130px;
   margin: 10px;
   border: 1px solid black;
   display: inline-block;
+  vertical-align: top;
 }
 
 .middle {
@@ -16,10 +24,27 @@
 }
 
 .mid {
-  width: 250px;
-  height: 160px;
+  width: 407px;
+  height: 180px;
   border: 1px solid black;
   display: inline-block;
   margin: 6px;
+  vertical-align: top;
+  font-size: 23px;
+  text-align: center;
+  margin-left: 177px;
+}
 
+.black {
+  background-color: black;
+  color:white;
+}
+
+.white {
+  background-color: white;
+  color:black;
+}
+
+.buttons {
+  vertical-align: bottom;
 }
