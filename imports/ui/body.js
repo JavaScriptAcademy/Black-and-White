@@ -7,6 +7,11 @@ import { Session } from 'meteor/session';
 import './body.html';
 import './card.js';
 
+Template.body.onCreated(function bodyOnCreated() {
+  Meteor.subscribe('cards');
+  Meteor.subscribe('comparedCards');
+});
+
 
 Template.body.events({
   'click .get-cards'() {

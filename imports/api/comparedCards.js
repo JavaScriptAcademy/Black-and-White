@@ -4,6 +4,13 @@ import { check } from 'meteor/check';
 
 export const ComparedCards = new Mongo.Collection('comparedCards');
 
+if (Meteor.isServer) {
+  // This code only runs on the server
+  Meteor.publish('comparedCards', function comparedCardsPublication() {
+    return ComparedCards.find();
+  });
+}
+
 
 Meteor.methods({
   'comparedCards.insert'(number, color) {

@@ -5,6 +5,13 @@ import { ComparedCards } from '../api/comparedCards.js';
 
 export const Cards = new Mongo.Collection('cards');
 
+if (Meteor.isServer) {
+  // This code only runs on the server
+  Meteor.publish('cards', function cardsPublication() {
+    return Cards.find();
+  });
+}
+
 var array = [1,2,3,4,5,6,7,8,9];
 Meteor.methods({
   'cards.insertAll'() {
