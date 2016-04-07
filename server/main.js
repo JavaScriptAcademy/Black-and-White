@@ -2,6 +2,7 @@ import { Meteor } from 'meteor/meteor';
 
 import '../imports/api/cards.js';
 import '../imports/api/comparedCards.js';
+import '../imports/api/rooms.js';
 
 
 Meteor.startup(() => {

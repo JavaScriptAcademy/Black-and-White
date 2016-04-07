@@ -10,8 +10,13 @@
   {{#if currentUser}}
 
     <div class="exist-rooms">
-
+      exist-rooms
+      {{#each rooms}}
+        {{name}}
+      {{/each}}
     </div>
+
+    <button class="newRoom">Create a Room</button>
 
   {{/if}}
 
