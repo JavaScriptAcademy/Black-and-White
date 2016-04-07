@@ -7,13 +7,14 @@ body {
   text-align: center;
 }
 .card {
-  width: 120px;
-  height: 145px;
+  width: 100px;
+  height: 155px;
   font-size: 130px;
   margin: 10px;
   border: 1px solid black;
   display: inline-block;
   vertical-align: top;
+  text-align: center;
 }
 
 .middle {
@@ -24,7 +25,7 @@ body {
 }
 
 .mid {
-  width: 407px;
+  width: 500px;
   height: 180px;
   border: 1px solid black;
   display: inline-block;
@@ -32,7 +33,7 @@ body {
   vertical-align: top;
   font-size: 23px;
   text-align: center;
-  margin-left: 177px;
+  margin-left: 105px;
 }
 
 .black {
@@ -44,7 +45,6 @@ body {
   background-color: white;
   color:black;
 }
-
-.buttons {
-  vertical-align: bottom;
+.player {
+  text-align: center;
 }

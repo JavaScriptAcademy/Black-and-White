@@ -32,9 +32,6 @@ Meteor.methods({
   'cards.removeAll'() {
     Cards.remove({});
   },
-  'firstHand'() {
-    return getRandomUser();
-  }
 });
 
 function shuffle(a) {
@@ -47,8 +44,3 @@ function shuffle(a) {
     }
 }
 
-function getRandomUser() {
-  var num = Math.random();
-  var users = Meteor.users.find().fetch();
-  return num > 0.5 ? users[0].username : users[1].username;
-}

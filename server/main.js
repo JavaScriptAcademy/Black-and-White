@@ -3,12 +3,13 @@ import { Meteor } from 'meteor/meteor';
 import '../imports/api/cards.js';
 import '../imports/api/comparedCards.js';
 
+Meteor.publish('users', function usersPublication() {
+    return Meteor.users.find({});
+  });
+
 
 Meteor.startup(() => {
   // code to run on server at startup
-
-
-
 });
 
 // Meteor.publish("userStatus", function() {
