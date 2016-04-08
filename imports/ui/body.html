@@ -8,15 +8,16 @@
 
 
   {{#if currentUser}}
+    <button class="newRoom">Create a Room</button>
 
     <div class="exist-rooms">
       exist-rooms
       {{#each rooms}}
-        {{name}}
+        {{> room}}
       {{/each}}
     </div>
 
-    <button class="newRoom">Create a Room</button>
+
 
   {{/if}}
 

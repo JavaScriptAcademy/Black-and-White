@@ -52,3 +52,9 @@ body {
 .player {
   text-align: center;
 }
+
+.room {
+  width: 300px;
+  height: 100px;
+  border: 1px solid black;
+}
