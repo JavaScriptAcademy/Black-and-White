@@ -11,7 +11,10 @@ Template.body.onCreated(function bodyOnCreated() {
   Meteor.subscribe('cards');
   Meteor.subscribe('comparedCards');
   Meteor.subscribe('users');
+  console.log(Meteor.users.find().fetch());
 });
+
+
 
 
 Template.body.events({
@@ -100,6 +103,7 @@ function gameStart() {
 
 function updateScore() {
   var usersArray = ComparedCards.find({}).fetch();
+  console.log(usersArray);
   var user = usersArray[0].owner === Meteor.userId() ? usersArray[0] : usersArray[1];
   var competitor = usersArray[0].owner === Meteor.userId() ? usersArray[1] : usersArray[0];
   if(user.number > competitor.number) {
@@ -131,9 +135,6 @@ function pickFirstHand() {
   if(Cards.findOne({'owner' : Meteor.userId()}) === undefined && Cards.findOne({'owner' : {$ne:Meteor.userId()}}) !== undefined){
     Session.set('nextFistHand', Cards.findOne({'owner' : {$ne:Meteor.userId()}}).username);
   }
-
-
-  console.log(Session.get('nextFistHand'));
 }
 
 
