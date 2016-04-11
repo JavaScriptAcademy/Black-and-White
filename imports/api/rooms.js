@@ -16,9 +16,10 @@ Meteor.methods({
       owner: Meteor.userId(),
       participant: null,
       status: 'beforeGame',
-      cards: [],
+      ownerCards: [],
+      competitorCards: [],
       comparedCards: [],
-      score: [],
+      score: [0,0],
     });
   },
   'rooms.remove'(roomId) {

@@ -1,6 +1,7 @@
 import { Meteor } from 'meteor/meteor';
 import { Template } from 'meteor/templating';
 
+
 import './room.html';
 
 Template.room.helpers({
@@ -9,6 +10,14 @@ Template.room.helpers({
   },
   isWaitingCompetitor() {
     return this.participant === null;
+  },
+  isPlaying() {
+    return this.participant !== null;
+  },
+  participant() {
+    if(this.participant !== null) {
+      return Meteor.users.find();
+    }
   }
 });
 

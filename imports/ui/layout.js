@@ -9,3 +9,6 @@ Template.ApplicationLayout.onCreated(function bodyOnCreated() {
   Meteor.subscribe('rooms');
   Meteor.subscribe('users');
 });
+
+
+console.log(Meteor.users.find({}).fetch());

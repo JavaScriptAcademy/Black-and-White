@@ -5,9 +5,16 @@
 <!--   {{#if currentUser}} -->
     <button class="newRoom">Create a Room</button>
 
-    <div class="exist-rooms">
-      exist-rooms
-      {{#each rooms}}
+    <div class="waiting-rooms">
+      waiting rooms
+      {{#each waitingRooms}}
+        {{> room}}
+      {{/each}}
+    </div>
+
+    <div class="playing-rooms">
+      playing rooms
+      {{#each playingRooms}}
         {{> room}}
       {{/each}}
     </div>
