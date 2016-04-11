@@ -5,6 +5,11 @@ import '../imports/api/comparedCards.js';
 import '../imports/api/rooms.js';
 
 
+Meteor.publish('users', function usersPublication() {
+    return Meteor.users.find({});
+  });
+
+
 Meteor.startup(() => {
   // code to run on server at startup
 

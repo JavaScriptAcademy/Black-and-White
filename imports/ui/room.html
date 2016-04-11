@@ -1,6 +1,9 @@
 <template name="room">
   <div class="room">
-    {{creater}}
+    <p>Owner: {{creater}}</p>
+    {{#if isWaitingCompetitor}}
+      <h4>Click to enter this room</h4>
+    {{/if}}
   </div>
 
 </template>

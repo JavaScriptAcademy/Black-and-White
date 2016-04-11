@@ -15,11 +15,17 @@ Meteor.methods({
     Rooms.insert({
       owner: Meteor.userId(),
       participant: null,
-
+      status: 'beforeGame',
+      cards: [],
+      comparedCards: [],
+      score: [],
     });
   },
   'rooms.remove'(roomId) {
     Rooms.remove(roomId);
   },
+  'room.updateParticipant'(roomId, participantId) {
+    Rooms.update({_id: roomId}, {$set: {participant: participantId}});
+  }
 
 });
