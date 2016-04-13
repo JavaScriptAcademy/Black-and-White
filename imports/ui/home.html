@@ -1,0 +1,30 @@
+<template name="home">
+
+
+  <div class="top-bar">
+    <h1>BLACK AND WHITE</h1>
+    {{> loginButtons}}
+  </div>
+  {{#if currentUser}}
+    <div class="row">
+      <div class="col-md-4"></div>
+      <div class="col-md-4">
+        <button class="newRoom btn btn-default btn-lg btn-block">CREATE ROOM</button>
+        <div class="waiting-rooms">
+          {{#each waitingRooms}}
+            {{> room}}
+          {{/each}}
+        </div>
+
+      </div>
+      <div class="col-md-4"></div>
+    </div>
+  {{/if}}
+</template>
+
+
+
+
+
+
+

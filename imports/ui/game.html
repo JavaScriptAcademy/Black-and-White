@@ -1,0 +1,85 @@
+<template name='game'>
+  <div class="top-button">
+    <button class="quit-room btn btn-default">Back to Homepage</button>
+  </div>
+  {{#if beforeGame}}
+    <div class="row">
+      <div class="col-md-2"></div>
+      <div class="col-md-8">
+        <div class="before-game">
+          {{#if waitingParticipant}}
+            <h1>Please wait for other player to join the room.</h1>
+          {{/if}}
+          {{#unless waitingParticipant}}
+            <h1>{{participantName}} just joined in the game.</h1>
+          {{/unless}}
+        </div>
+      </div>
+      <div class="col-md-2"></div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-5"></div>
+      <div class="col-md-2">
+        <button class="start btn btn-default btn-lg">START GAME</button>
+      </div>
+      <div class="col-md-5"></div>
+    </div>
+  {{/if}}
+
+  {{#if inGame}}
+    <div class="player">
+      {{#each competitorCards}}
+        {{> card}}
+      {{/each}}
+    </div>
+
+    <div class="submit-cards mid">
+      {{#each submittedCards}}
+        {{> card}}
+      {{/each}}
+    </div>
+
+    <div class="turn-and-score mid">
+      <span>{{ownerName}} {{ownerScore}}</span>
+      <span> : {{participantScore}} {{participantName}}</span>
+      <br>
+      <span>This is round {{round}}. </span>
+      <br>
+      <span>{{turn}}'s turn to pick the card.</span>
+    </div>
+
+    <div class="bottom player">
+      {{#each myCards}}
+        {{> card}}
+      {{/each}}
+    </div>
+
+  {{/if}}
+
+  {{#if afterGame}}
+      {{#if equalScore}}
+        <p>The final result is draw. Try again to be the winner! </p>
+      {{/if}}
+      {{#unless equalScore}}
+        <p>The winner is {{winner}}</p>
+      {{/unless}}
+
+      <p>{{ownerName}}'s cards record</p>
+      {{#each ownerCardsRecord}}
+        {{> card}}
+      {{/each}}
+
+      {{#each participantCardsRecord}}
+        {{> card}}
+      {{/each}}
+      <p>{{participantName}}'s cards record</p>
+
+
+      <button class="start btn btn-default">Play Again</button>
+  {{/if}}
+</template>
+
+
+
+

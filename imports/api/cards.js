@@ -1,46 +1,28 @@
-import { Meteor } from 'meteor/meteor';
-import { Mongo } from 'meteor/mongo';
-import { check } from 'meteor/check';
-import { ComparedCards } from '../api/comparedCards.js';
+import { Rooms } from '../api/rooms.js';
 
-export const Cards = new Mongo.Collection('cards');
-
-if (Meteor.isServer) {
-  // This code only runs on the server
-  Meteor.publish('cards', function cardsPublication() {
-    return Cards.find();
-  });
-}
-
-var array = [1,2,3,4,5,6,7,8,9];
 Meteor.methods({
-  'cards.insertAll'() {
-    shuffle(array);
-    for(var index = 0; index < array.length; index++){
-      Cards.insert({
-        number: array[index],
-        color: array[index]%2 === 0 ? 'black' : 'white',
-        owner: Meteor.userId(),
-        username: Meteor.user().username,
-      });
+  'cards.remove'(cardObj) {
+    let roomObj = Rooms.findOne(cardObj.roomid);
+    if(roomObj.owner === cardObj.userid){
+      let index = roomObj.ownerCards.indexOf(cardObj.num);
+      roomObj.ownerCards.splice(index, 1);
+      let array = roomObj.ownerCards;
+      Rooms.update({_id: cardObj.roomid}, {$set: {ownerCards: array}});
+    } else {
+      let index = roomObj.participantCards.indexOf(cardObj.num);
+      roomObj.participantCards.splice(index, 1);
+      let array = roomObj.participantCards;
+      Rooms.update({_id: cardObj.roomid}, {$set: {participantCards: array}});
     }
   },
-  'cards.remove'(cardId) {
-    check(cardId, String);
-    Cards.remove(cardId);
-  },
-  'cards.removeAll'() {
-    Cards.remove({});
-  },
+  'cards.addInHistory'(cardObj) {
+    let roomObj = Rooms.findOne(cardObj.roomid);
+    if(roomObj.owner === cardObj.userid){
+      roomObj.ownerOrder.push(cardObj.num);
+      Rooms.update({_id: cardObj.roomid}, {$set: {ownerOrder: roomObj.ownerOrder}});
+    } else {
+      roomObj.participantOrder.push(cardObj.num);
+      Rooms.update({_id: cardObj.roomid}, {$set: {participantOrder: roomObj.participantOrder}});
+    }
+  }
 });
-
-function shuffle(a) {
-    var j, x, i;
-    for (i = a.length; i; i -= 1) {
-        j = Math.floor(Math.random() * i);
-        x = a[i - 1];
-        a[i - 1] = a[j];
-        a[j] = x;
-    }
-}
-
