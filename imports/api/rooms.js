@@ -17,16 +17,17 @@ Meteor.methods({
       participant: null,
       status: 'beforeGame',
       ownerCards: [],
-      competitorCards: [],
+      ownerOrder: [],
+      participantCards: [],
+      participantOrder: [],
       comparedCards: [],
-      score: [0,0],
+      ownerScore: 0,
+      participantScore: 0,
+      nextFirstHand: null,
+      round: 1,
     });
   },
   'rooms.remove'(roomId) {
     Rooms.remove(roomId);
   },
-  'room.updateParticipant'(roomId, participantId) {
-    Rooms.update({_id: roomId}, {$set: {participant: participantId}});
-  }
-
 });

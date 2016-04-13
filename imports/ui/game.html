@@ -1,61 +1,85 @@
 <template name='game'>
-  <div class="player">
-    {{#each competitorCards}}
-        {{> card}}
-    {{/each}}
+  <div class="top-button">
+    <button class="quit-room btn btn-default">Back to Homepage</button>
   </div>
-
-
-  <div class="submit-cards mid">
-    {{#each submittedCards}}
-      {{> card}}
-    {{/each}}
-  </div>
-  <div class="turn-and-score mid">
-      {{#if userHasNoCards}}
-        <span>Please click Get Cards</span>
-        {{else}}
-          {{#if competitorHasNoCards}}
-            <span>wait for competitor to get cards</span>
-            {{else}}
-              {{#if beforeGame}}
-                <span>Click start game to play</span>
-                {{else}}
-                  {{#if inGame}}
-                    <span>{{myName}} {{myScore}}</span>
-                    <span> : {{competitorScore}} {{competitorName}}</span>
-                    <br>
-                    <span>This is round {{roundNumber}}. </span>
-                    <br>
-                    <span>For this round, {{firstHand}} picks the card first.</span>
-                  {{/if}}
-              {{/if}}
+  {{#if beforeGame}}
+    <div class="row">
+      <div class="col-md-2"></div>
+      <div class="col-md-8">
+        <div class="before-game">
+          {{#if waitingParticipant}}
+            <h1>Please wait for other player to join the room.</h1>
           {{/if}}
-      {{/if}}
-
-      {{#if afterGame}}
-      <br>
-        <span>{{winner}} wins the game !!</span>
-      {{/if}}
-
-      <div class="buttons">
-        {{#if userHasNoCards}}
-          <button class="get-cards btn btn-default">Get Cards</button>
-        {{/if}}
-        <button class="start btn btn-default">Start the game</button>
-        <button class="restart btn btn-default">Restart Game</button>
-
+          {{#unless waitingParticipant}}
+            <h1>{{participantName}} just joined in the game.</h1>
+          {{/unless}}
+        </div>
       </div>
-  </div>
+      <div class="col-md-2"></div>
+    </div>
 
+    <div class="row">
+      <div class="col-md-5"></div>
+      <div class="col-md-2">
+        <button class="start btn btn-default btn-lg">START GAME</button>
+      </div>
+      <div class="col-md-5"></div>
+    </div>
+  {{/if}}
 
-
-  <div class="bottom player">
-    {{#each myCards}}
+  {{#if inGame}}
+    <div class="player">
+      {{#each competitorCards}}
         {{> card}}
-    {{/each}}
-  </div>
+      {{/each}}
+    </div>
+
+    <div class="submit-cards mid">
+      {{#each submittedCards}}
+        {{> card}}
+      {{/each}}
+    </div>
+
+    <div class="turn-and-score mid">
+      <span>{{ownerName}} {{ownerScore}}</span>
+      <span> : {{participantScore}} {{participantName}}</span>
+      <br>
+      <span>This is round {{round}}. </span>
+      <br>
+      <span>{{turn}}'s turn to pick the card.</span>
+    </div>
+
+    <div class="bottom player">
+      {{#each myCards}}
+        {{> card}}
+      {{/each}}
+    </div>
+
+  {{/if}}
+
+  {{#if afterGame}}
+      {{#if equalScore}}
+        <p>The final result is draw. Try again to be the winner! </p>
+      {{/if}}
+      {{#unless equalScore}}
+        <p>The winner is {{winner}}</p>
+      {{/unless}}
+
+      <p>{{ownerName}}'s cards record</p>
+      {{#each ownerCardsRecord}}
+        {{> card}}
+      {{/each}}
+
+      {{#each participantCardsRecord}}
+        {{> card}}
+      {{/each}}
+      <p>{{participantName}}'s cards record</p>
+
+
+      <button class="start btn btn-default">Play Again</button>
+  {{/if}}
 </template>
+
 
 
 

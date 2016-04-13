@@ -16,15 +16,16 @@ Template.room.helpers({
   },
   participant() {
     if(this.participant !== null) {
-      return Meteor.users.find();
+      return Meteor.users.findOne(this.participant).username;
     }
   }
 });
 
+
 Template.room.events({
   'click .room'() {
     console.log(this._id);
-    Meteor.call('room.updateParticipant', this._id, Meteor.userId());
+    Meteor.call('game.updateParticipant', this._id, Meteor.userId());
     Router.go('/rooms/' + this._id);
   }
 });

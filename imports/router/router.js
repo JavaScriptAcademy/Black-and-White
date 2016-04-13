@@ -7,5 +7,9 @@ Router.route('/', function () {
 });
 
 Router.route('/rooms/:_id', function() {
-  this.render('game');
+  this.render('game', {
+    data: function() {
+      return {_id:this.params._id};
+    }
+  });
 });

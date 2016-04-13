@@ -11,4 +11,4 @@ Template.ApplicationLayout.onCreated(function bodyOnCreated() {
 });
 
 
-console.log(Meteor.users.find({}).fetch());
+

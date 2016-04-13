@@ -1,8 +1,9 @@
 import { Meteor } from 'meteor/meteor';
 
 import '../imports/api/cards.js';
-import '../imports/api/comparedCards.js';
+// import '../imports/api/comparedCards.js';
 import '../imports/api/rooms.js';
+import '../imports/api/games.js';
 
 
 Meteor.publish('users', function usersPublication() {
