@@ -2,22 +2,40 @@
 
 
   <div class="top-bar">
-    <h1>BLACK AND WHITE</h1>
-    {{> loginButtons}}
+<!--     <h1>BLACK AND WHITE</h1> -->
+    <img class="logo" src="/3.gif">
+    <div>
+      {{> loginButtons}}
+    </div>
+
+<!--     <div class="" >
+      <img src="/black_and_white.jpg">
+    </div> -->
+
+
+
   </div>
   {{#if currentUser}}
     <div class="row">
-      <div class="col-md-4"></div>
-      <div class="col-md-4">
-        <button class="newRoom btn btn-default btn-lg btn-block">CREATE ROOM</button>
+      <div class="col-md-4 top-bar">
+        <h1>WAITING</h1>
         <div class="waiting-rooms">
           {{#each waitingRooms}}
             {{> room}}
           {{/each}}
         </div>
-
       </div>
-      <div class="col-md-4"></div>
+      <div class="col-md-4">
+        <button class="newRoom btn btn-default btn-lg btn-block">CREATE ROOM</button>
+      </div>
+      <div class="col-md-4 top-bar">
+        <h1>IN GAME</h1>
+        <div class="waiting-rooms">
+          {{#each playingRooms}}
+            {{> room}}
+          {{/each}}
+        </div>
+      </div>
     </div>
   {{/if}}
 </template>

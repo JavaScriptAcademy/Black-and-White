@@ -1,9 +1,17 @@
 /* CSS declarations go here */
 
-body {
+.game {
+  background-image: url("/3.jpg");
+  background-size: cover;
 }
 .top-bar {
   text-align: center;
+  color: black;
+}
+
+.logo {
+  margin: 60px;
+
 }
 .card {
   width: 120px;
@@ -25,7 +33,7 @@ body {
 .mid {
   width: 407px;
   height: 180px;
-  border: 1px solid black;
+
   display: inline-block;
   margin: 6px;
   vertical-align: top;
@@ -67,9 +75,11 @@ body {
 
 .newRoom {
   margin-top: 30px;
+  margin-bottom: 70px;
 }
 
 .top-button {
+  margin-top: 30px;
   margin-left: 1000px;
 }
 
